@@ -5,23 +5,9 @@ require("config.lazy")
 
 -- Load general Neovim options
 require("options")
-for _, mode in ipairs({ "n", "i", "v" }) do
-	vim.keymap.set(mode, "<Up>", "<Nop>")
-	vim.keymap.set(mode, "<Down>", "<Nop>")
-	vim.keymap.set(mode, "<Left>", "<Nop>")
-	vim.keymap.set(mode, "<Right>", "<Nop>")
-end
-vim.keymap.set("n", "<Space><Space>x", "<cmd>% source <CR>")
-vim.keymap.set("n", "<Space>x", "<cmd>.lua<CR>")
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("n", "<A-w>", "<cmd>bdelete<CR>")
--- Move current line up/down
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("t", "<C-n>", "<C-\\><C-n>")
-vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<CR>")
+
+-- Load all keymaps (ek hi jagah, category-wise organised)
+require("config.keymaps")
 -- ============================================================
 -- Clipboard
 -- ============================================================
@@ -65,25 +51,6 @@ if vim.g.neovide then
 
 	-- Extra spacing between lines
 	vim.opt.linespace = 0
-
-	-- --------------------------------------------------------
-	-- Zoom Keybindings
-	-- --------------------------------------------------------
-
-	local function neovideScale(amount)
-		local temp = vim.g.neovide_scale_factor + amount
-		vim.g.neovide_scale_factor = math.max(0.5, math.min(3.0, temp))
-	end
-
-	vim.keymap.set("n", "<C-=>", function()
-		neovideScale(0.1)
-	end)
-	vim.keymap.set("n", "<C-->", function()
-		neovideScale(-0.1)
-	end)
-	vim.keymap.set("n", "<C-0>", function()
-		vim.g.neovide_scale_factor = 1.0
-	end)
 
 	-- --------------------------------------------------------
 	-- Window / UI Scale

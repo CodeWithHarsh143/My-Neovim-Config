@@ -56,7 +56,9 @@ function M.setup()
 			:find()
 	end
 
-	vim.keymap.set("n", "<space>fg", multigrep, { desc = "Multi Grep (pattern  glob)" })
+	vim.api.nvim_create_user_command("Multigrep", function()
+		multigrep()
+	end, { desc = "Multi Grep (pattern  glob)" })
 end
 
 return M

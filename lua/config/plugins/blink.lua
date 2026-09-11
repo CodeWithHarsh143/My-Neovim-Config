@@ -66,7 +66,7 @@ return {
 			},
 
 			menu = {
-				auto_show = false,
+				auto_show = true,
 			},
 		},
 

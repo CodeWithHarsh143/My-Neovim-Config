@@ -1,6 +1,3 @@
--- Exit terminal mode with Ctrl+c
-vim.keymap.set("t", "<A-c>", "<C-\\><C-n>")
-
 local state = {
 	floating = {
 		buf = -1,
@@ -58,5 +55,3 @@ local function toggle_terminal()
 end
 
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
-
-vim.keymap.set({ "n", "t" }, "<Space>tt", toggle_terminal)
