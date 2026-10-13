@@ -1,4 +1,4 @@
--- ============================================================================
+-- ===========================================================================
 --  KEYMAPS | Saare keymaps ek hi jagah, category ke hisaab se organised
 -- ============================================================================
 --  Ye file `init.lua` me `require("options")` ke baad load hoti hai.
@@ -33,6 +33,10 @@ keymap("n", "<Esc>", "<cmd>nohlsearch<CR>")
 keymap("n", "<A-w>", "<cmd>bdelete<CR>")
 -- Zen mode (focus mode) ko toggle karta hai
 keymap("n", "<leader>z", "<cmd>ZenMode<CR>")
+vim.keymap.set("c", "<C-S-v>", "<C-r>+", { noremap = true })
+vim.keymap.set("t", "<C-S-v>", function()
+	vim.api.nvim_paste(vim.fn.getreg("+"), true, -1)
+end, { noremap = true })
 
 -- ============================================================================
 --  LINE / SELECTION MOVE (up / down)
@@ -52,10 +56,10 @@ keymap("v", "<A-j>", ":m '>+1<CR>gv=gv")
 -- ============================================================================
 
 -- Ctrl + h/j/k/l: cursor ko left/down/up/right window me move karta hai
-keymap("n", "<C-h>", "<C-w>h")
-keymap("n", "<C-j>", "<C-w>j")
-keymap("n", "<C-k>", "<C-w>k")
-keymap("n", "<C-l>", "<C-w>l")
+keymap("n", "<s-h>", ":wincmd h<CR>")
+keymap("n", "<s-j>", ":wincmd j<CR>")
+keymap("n", "<s-k>", ":wincmd k<CR>")
+keymap("n", "<s-l>", ":wincmd l<CR>")
 
 -- Alt + Arrow keys: active window ka size resize karta hai
 keymap("n", "<A-Up>", "<cmd>resize +2<CR>") -- height badhata hai
@@ -102,9 +106,19 @@ keymap("n", "<space>ff", "<cmd>Telescope find_files<CR>", { desc = "Find Files" 
 -- Space + fd: directory/file browser kholta hai
 keymap("n", "<space>fd", "<cmd>Telescope file_browser select_buffer=true<CR>", { desc = "Find Directory / Browse" })
 -- Space + fc: nvim ki config files find karta hai
-keymap("n", "<space>fc", "<cmd>Telescope find_files cwd=" .. vim.fn.stdpath("config") .. "<CR>", { desc = "Find Nvim Config Files" })
+keymap(
+	"n",
+	"<space>fc",
+	"<cmd>Telescope find_files cwd=" .. vim.fn.stdpath("config") .. "<CR>",
+	{ desc = "Find Nvim Config Files" }
+)
 -- Space + fp: installed plugins ke source files find karta hai
-keymap("n", "<space>fp", "<cmd>Telescope find_files cwd=" .. vim.fs.joinpath(vim.fn.stdpath("data"), "lazy") .. "<CR>", { desc = "Find Plugin Source" })
+keymap(
+	"n",
+	"<space>fp",
+	"<cmd>Telescope find_files cwd=" .. vim.fs.joinpath(vim.fn.stdpath("data"), "lazy") .. "<CR>",
+	{ desc = "Find Plugin Source" }
+)
 -- Space + fb: currently open buffers (files) list karta hai
 keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Find buffers" })
 -- Space + fg: multi line grep search (format: `pattern  glob`)

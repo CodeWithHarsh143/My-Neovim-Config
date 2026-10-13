@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		})
 	end,
 })
-
+--
 -- ============================================================
 -- Neovide Configuration
 -- ============================================================
@@ -110,14 +110,14 @@ if vim.g.neovide then
 	-- Window Opacity
 	-- --------------------------------------------------------
 
-	-- Opacity of the entire Neovide window
-	vim.g.neovide_opacity = 1.0
+	-- -- Opacity of the entire Neovide window
+	-- vim.g.neovide_opacity = 1.0
+	-- --
+	-- -- -- Opacity of the normal Neovide window
+	-- vim.g.neovide_normal_opacity = 1.0
 	--
-	-- -- Opacity of the normal Neovide window
-	vim.g.neovide_normal_opacity = 1.0
-
-	-- Show window border
-	vim.g.neovide_show_border = true
+	-- -- Show window border
+	-- vim.g.neovide_show_border = true
 
 	-- --------------------------------------------------------
 	-- Window Animations
@@ -141,16 +141,16 @@ if vim.g.neovide then
 	-- --------------------------------------------------------
 
 	-- Enable progress bar
-	vim.g.neovide_progress_bar_enabled = true
+	-- vim.g.neovide_progress_bar_enabled = true
 
 	-- Progress bar height
-	vim.g.neovide_progress_bar_height = 5.0
+	-- vim.g.neovide_progress_bar_height = 5.0
 
 	-- Progress bar animation speed
-	vim.g.neovide_progress_bar_animation_speed = 200.0
+	-- vim.g.neovide_progress_bar_animation_speed = 200.0
 
 	-- Delay before hiding the progress bar
-	vim.g.neovide_progress_bar_hide_delay = 0.2
+	-- vim.g.neovide_progress_bar_hide_delay = 0.2
 
 	-- --------------------------------------------------------
 	-- Mouse
@@ -178,14 +178,14 @@ if vim.g.neovide then
 	-- --------------------------------------------------------
 
 	-- Ask for confirmation before quitting
-	vim.g.neovide_confirm_quit = true
+	-- vim.g.neovide_confirm_quit = true
 
 	-- --------------------------------------------------------
 	-- Fullscreen / Window Size
 	-- --------------------------------------------------------
 
 	-- Start Neovide in fullscreen
-	vim.g.neovide_fullscreen = true
+	-- vim.g.neovide_fullscreen = true
 
 	-- Remember previous window size
 	vim.g.neovide_remember_window_size = true
@@ -204,7 +204,7 @@ if vim.g.neovide then
 	vim.g.neovide_cursor_short_animation_length = 0.04
 
 	-- Cursor trail length
-	vim.g.neovide_cursor_trail_size = 1.0
+	vim.g.neovide_cursor_trail_size = 3.0
 
 	-- Animate cursor in Insert mode
 	vim.g.neovide_cursor_animate_in_insert_mode = true

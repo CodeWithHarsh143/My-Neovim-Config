@@ -18,21 +18,18 @@ return {
 					end
 
 					if cmp.is_visible() then
-						return cmp.select_next()
+						return cmp.select_and_accept()
 					end
 
 					return false
 				end,
 
+				"snippet_forward",
 				"fallback",
 			},
 
 			["<S-Tab>"] = {
 				function(cmp)
-					if cmp.snippet_active() then
-						return cmp.snippet_backward()
-					end
-
 					if cmp.is_visible() then
 						return cmp.select_prev()
 					end
@@ -40,6 +37,7 @@ return {
 					return false
 				end,
 
+				"snippet_backward",
 				"fallback",
 			},
 
@@ -67,6 +65,24 @@ return {
 
 			menu = {
 				auto_show = true,
+			},
+
+			list = {
+				selection = {
+					preselect = true,
+					auto_insert = false,
+				},
+			},
+
+			ghost_text = {
+				enabled = false,
+			},
+		},
+		signature = {
+			enabled = false,
+
+			window = {
+				show_documentation = true,
 			},
 		},
 
